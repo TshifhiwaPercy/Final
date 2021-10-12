@@ -8,6 +8,5 @@ import java.util.List;
 public interface FetchAccountTypeFlow {
     List<AccountTypeDto> getAllAccountTypes();
     AccountTypeDto getAccountTypeByMnemonic(String mnemonic);
-
-    AccountType getAccountTypeDbEntityMnemonic(String accountTypeMnemonic);
+    AccountType getAccountTypeDbEntityByMnemonic(String mnemonic);
 }

@@ -69,5 +69,36 @@ public class AccountTypeTranslatorImpl implements AccountTypeTranslator {
             throw new RuntimeException("Unable to read from the DB", e);
         }
     }
+    @Override
+    public void delete(AccountType accountType){
+        try{
+            accountTypeRepository.delete(accountType);
+        }
+        catch(Exception e){
+            throw new RuntimeException("Unable to read from the DB",e);
+        }
+    }
+    @Override
+    public AccountTypeDto save(AccountType accountType){
+        try{
+            return new AccountTypeDto(accountTypeRepository.save(accountType));
+        }
+        catch(Exception ex){
+            throw new RuntimeException("Unable to save to the DB",ex);
+        }
+    }
+    @Override
+    public AccountType getAccountTypeDbEntityByMnemonic(String mnemonic){
+        try{
+            return accountTypeRepository.getAccountTypeByMnemonic(mnemonic);
+        }
+        catch(Exception e){
+            throw new RuntimeException("Unable to read from the DB", e);
+        }
+    }
+    @Override
+    public void someMethod(){}
+
+
 
 }

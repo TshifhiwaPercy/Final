@@ -1,6 +1,7 @@
 package za.ac.nwu.ac.domain.persistence;
 
 import com.sun.corba.se.spi.activation.ServerAlreadyInstalledHelper;
+import za.ac.nwu.ac.domain.dto.AccountTypeDto;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -28,6 +29,14 @@ public class AccountTransaction implements Serializable {
         this.amount = amount;
         this.transactionDate = transactionDate;
     }
+
+    public AccountTransaction(AccountType accountType, long l, long l1, LocalDate now) {
+        this.accountType = accountType;
+        this.memberId = l;
+        this.amount = l1;
+        this.transactionDate = now;
+    }
+
     @Id
     @SequenceGenerator(name = "ACCOUNT_SEQ", sequenceName = "ANONYMOUS.ACCOUNT_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACCOUNT_SEQ")
@@ -35,40 +44,39 @@ public class AccountTransaction implements Serializable {
     public Long getTransactionId() {
         return transactionId;
     }
-
     public void setTransactionId(Long transactionId) {
         this.transactionId = transactionId;
     }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACCOUNT_TYPE_ID")
     public AccountType getAccountType() {
         return accountType;
     }
-
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
+
     @Column(name = "MEMBER_ID")
     public Long getMemberId() {
         return memberId;
     }
-
     public void setMemberId(Long memberId) {
         this.memberId = memberId;
     }
+
     @Column(name= "AMOUNT")
     public Long getAmount() {
         return amount;
     }
-
     public void setAmount(Long amount) {
         this.amount = amount;
     }
+
     @Column(name = "TX_DATE")
     public LocalDate getTransactionDate() {
         return transactionDate;
     }
-
     public void setTransactionDate(LocalDate transactionDate) {
         this.transactionDate = transactionDate;
     }
@@ -77,6 +85,7 @@ public class AccountTransaction implements Serializable {
     public AccountTransactionDetails getDetails(){
         return details;
     }
+
     public void setDetails(AccountTransactionDetails details){
         this.details = details;
     }

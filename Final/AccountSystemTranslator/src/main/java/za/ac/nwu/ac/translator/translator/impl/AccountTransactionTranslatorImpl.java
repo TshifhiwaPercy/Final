@@ -10,7 +10,7 @@ import java.util.List;
 
 @Component
 public class AccountTransactionTranslatorImpl implements AccountTransactionTranslator {
-    private AccountTransactionRepository repo;
+    private final AccountTransactionRepository repo;
     public AccountTransactionTranslatorImpl(AccountTransactionRepository repo){
         this.repo = repo;
     }
